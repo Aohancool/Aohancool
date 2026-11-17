@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="340" viewBox="0 0 1200 340">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#070b14"/><stop offset=".55" stop-color="#0c1428"/><stop offset="1" stop-color="#160c2e"/>
+    </linearGradient>
+    <linearGradient id="gname" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox" spreadMethod="reflect">
+      <stop offset="0" stop-color="#22d3ee"/><stop offset=".5" stop-color="#a78bfa"/><stop offset="1" stop-color="#f472b6"/>
+      <animateTransform attributeName="gradientTransform" type="translate" values="-1 0;1 0;-1 0" dur="8s" repeatCount="indefinite"/>
+    </linearGradient>
+    <radialGradient id="halo"><stop offset="0" stop-color="#7c3aed" stop-opacity=".55"/><stop offset="1" stop-color="#7c3aed" stop-opacity="0"/></radialGradient>
+    <radialGradient id="blob1"><stop offset="0" stop-color="#06b6d4" stop-opacity=".35"/><stop offset="1" stop-color="#06b6d4" stop-opacity="0"/></radialGradient>
+    <radialGradient id="blob2"><stop offset="0" stop-color="#8b5cf6" stop-opacity=".35"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/></radialGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#94a3b8" stroke-opacity=".07"/></pattern>
+    <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity=".1"/></linearGradient>
+    <mask id="gm"><rect width="1200" height="340" fill="url(#fade)"/></mask>
+    <clipPath id="frame"><rect width="1200" height="340" rx="18"/></clipPath>
+  </defs>
+  <style>
+    .hello{font:500 18px 'SF Mono','JetBrains Mono',Menlo,Consolas,'Liberation Mono',monospace;fill:#64748b}
+    .name{font:800 66px -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',Helvetica,Arial,sans-serif;letter-spacing:-1.5px}
+    .role{font:600 26px 'SF Mono','JetBrains Mono',Menlo,Consolas,'Liberation Mono',monospace;fill:#e2e8f0}
+    .chip{font:600 13px -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',Helvetica,Arial,sans-serif}
+    .nl{font:800 15px 'SF Mono','JetBrains Mono',Menlo,Consolas,'Liberation Mono',monospace;fill:#f8fafc}
+    .ns{font:600 11px 'SF Mono','JetBrains Mono',Menlo,Consolas,'Liberation Mono',monospace;fill:#cbd5e1}
+    .e{stroke:#334155;stroke-width:1.4}
+    .e2{stroke:#1e293b;stroke-width:1;stroke-dasharray:3 5}
+    .flow{stroke:#22d3ee;stroke-width:2.2;stroke-linecap:round;stroke-dasharray:6 120;animation:flow 2.6s linear infinite}
+    .node{animation:pulse 3s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+    .b1{animation:drift1 14s ease-in-out infinite}
+    .b2{animation:drift2 18s ease-in-out infinite}
+    .scan{animation:scan 6s linear infinite}
+    @keyframes flow{to{stroke-dashoffset:-126}}
+    @keyframes pulse{50%{transform:scale(1.06)}}
+    @keyframes drift1{50%{transform:translate(120px,40px)}}
+    @keyframes drift2{50%{transform:translate(-140px,-30px)}}
+    @keyframes scan{from{transform:translateY(-40px)}to{transform:translateY(380px)}}
+  </style>
+  <g clip-path="url(#frame)">
+    <rect width="1200" height="340" fill="url(#bg)"/>
+    <rect width="1200" height="340" fill="url(#grid)" mask="url(#gm)"/>
+    <circle class="b1" cx="180" cy="60" r="260" fill="url(#blob1)"/>
+    <circle class="b2" cx="1000" cy="300" r="300" fill="url(#blob2)"/>
+    <rect class="scan" width="1200" height="2" fill="#22d3ee" opacity=".08"/>
+    <line x1="930" y1="170" x2="820" y2="78" class="e"/><line x1="930" y1="170" x2="820" y2="78" class="flow" style="animation-delay:-0.00s"/><line x1="930" y1="170" x2="1050" y2="70" class="e"/><line x1="930" y1="170" x2="1050" y2="70" class="flow" style="animation-delay:-0.37s"/><line x1="930" y1="170" x2="1110" y2="175" class="e"/><line x1="930" y1="170" x2="1110" y2="175" class="flow" style="animation-delay:-0.74s"/><line x1="930" y1="170" x2="1040" y2="275" class="e"/><line x1="930" y1="170" x2="1040" y2="275" class="flow" style="animation-delay:-1.11s"/><line x1="930" y1="170" x2="840" y2="272" class="e"/><line x1="930" y1="170" x2="840" y2="272" class="flow" style="animation-delay:-1.48s"/><line x1="930" y1="170" x2="760" y2="178" class="e"/><line x1="930" y1="170" x2="760" y2="178" class="flow" style="animation-delay:-1.85s"/><line x1="820" y1="78" x2="1050" y2="70" class="e2"/><line x1="1050" y1="70" x2="1110" y2="175" class="e2"/><line x1="1110" y1="175" x2="1040" y2="275" class="e2"/><line x1="1040" y1="275" x2="840" y2="272" class="e2"/><line x1="840" y1="272" x2="760" y2="178" class="e2"/><line x1="760" y1="178" x2="820" y2="78" class="e2"/>
+    <g class="node" style="animation-delay:-0.0s">
+      <circle cx="930" cy="170" r="44" fill="url(#halo)" opacity="0.9"/>
+      <circle cx="930" cy="170" r="34" fill="#0b1220" stroke="url(#gname)" stroke-width="2.5"/>
+      <text x="930" y="174" text-anchor="middle" class="nl">LLM</text></g><g class="node" style="animation-delay:-0.5s">
+      <circle cx="820" cy="78" r="30.4" fill="url(#halo)" opacity="0.5"/>
+      <circle cx="820" cy="78" r="20.4" fill="#0b1220" stroke="url(#gname)" stroke-width="1.6"/>
+      <text x="820" y="82" text-anchor="middle" class="ns">Plan</text></g><g class="node" style="animation-delay:-1.0s">
+      <circle cx="1050" cy="70" r="34.0" fill="url(#halo)" opacity="0.5"/>
+      <circle cx="1050" cy="70" r="24.0" fill="#0b1220" stroke="url(#gname)" stroke-width="1.6"/>
+      <text x="1050" y="74" text-anchor="middle" class="ns">Tools</text></g><g class="node" style="animation-delay:-1.5s">
+      <circle cx="1110" cy="175" r="30" fill="url(#halo)" opacity="0.5"/>
+      <circle cx="1110" cy="175" r="20" fill="#0b1220" stroke="url(#gname)" stroke-width="1.6"/>
+      <text x="1110" y="179" text-anchor="middle" class="ns">MCP</text></g><g class="node" style="animation-delay:-2.0s">
+      <circle cx="1040" cy="275" r="37.6" fill="url(#halo)" opacity="0.5"/>
+      <circle cx="1040" cy="275" r="27.6" fill="#0b1220" stroke="url(#gname)" stroke-width="1.6"/>
+      <text x="1040" y="279" text-anchor="middle" class="ns">Memory</text></g><g class="node" style="animation-delay:-2.5s">
+      <circle cx="840" cy="272" r="30" fill="url(#halo)" opacity="0.5"/>
+      <circle cx="840" cy="272" r="20" fill="#0b1220" stroke="url(#gname)" stroke-width="1.6"/>
+      <text x="840" y="276" text-anchor="middle" class="ns">RAG</text></g><g class="node" style="animation-delay:-3.0s">
+      <circle cx="760" cy="178" r="30.4" fill="url(#halo)" opacity="0.5"/>
+      <circle cx="760" cy="178" r="20.4" fill="#0b1220" stroke="url(#gname)" stroke-width="1.6"/>
+      <text x="760" y="182" text-anchor="middle" class="ns">Eval</text></g>
+    <text x="64" y="92" class="hello">~/beijing $ echo "hello, world 👋 I'm"</text>
+    <text x="61" y="160" class="name" fill="url(#gname)">Aohancool</text>
+    <text x="64" y="222" class="role" fill="#475569" opacity="0">.</text>
+    <text x="42" y="222" style="font:700 26px 'SF Mono','JetBrains Mono',Menlo,Consolas,'Liberation Mono',monospace;fill:#22d3ee">›</text>
+    
+    <clipPath id="c0"><rect x="64" y="192" height="40" width="0">
+      <animate attributeName="width" dur="12.8s" repeatCount="indefinite" keyTimes="0;0.0875;0.2;0.2425;1" values="0;285.7;285.7;0;0"/></rect></clipPath>
+    <text x="64" y="222" clip-path="url(#c0)" class="role">AI Agent Developer</text>
+    <rect y="198" width="3" height="30" fill="#22d3ee" x="64">
+      <animate attributeName="x" dur="12.8s" repeatCount="indefinite" keyTimes="0;0.0875;0.2;0.2425;1" values="64;349.7;349.7;64;64"/>
+      <animate attributeName="opacity" dur="12.8s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.25;1" values="1;0;0"/>
+    </rect>
+    <clipPath id="c1"><rect x="64" y="192" height="40" width="0">
+      <animate attributeName="width" dur="12.8s" repeatCount="indefinite" keyTimes="0;0.25;0.3375;0.45;0.4925;1" values="0;0;379.6;379.6;0;0"/></rect></clipPath>
+    <text x="64" y="222" clip-path="url(#c1)" class="role">LLM Application Engineer</text>
+    <rect y="198" width="3" height="30" fill="#22d3ee" x="64">
+      <animate attributeName="x" dur="12.8s" repeatCount="indefinite" keyTimes="0;0.25;0.3375;0.45;0.4925;1" values="64;64;443.6;443.6;64;64"/>
+      <animate attributeName="opacity" dur="12.8s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.25;0.5;1" values="0;1;0;0"/>
+    </rect>
+    <clipPath id="c2"><rect x="64" y="192" height="40" width="0">
+      <animate attributeName="width" dur="12.8s" repeatCount="indefinite" keyTimes="0;0.5;0.5875;0.7;0.7425;1" values="0;0;348.3;348.3;0;0"/></rect></clipPath>
+    <text x="64" y="222" clip-path="url(#c2)" class="role">MCP &amp; Tool-Use Builder</text>
+    <rect y="198" width="3" height="30" fill="#22d3ee" x="64">
+      <animate attributeName="x" dur="12.8s" repeatCount="indefinite" keyTimes="0;0.5;0.5875;0.7;0.7425;1" values="64;64;412.3;412.3;64;64"/>
+      <animate attributeName="opacity" dur="12.8s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.5;0.75;1" values="0;1;0;0"/>
+    </rect>
+    <clipPath id="c3"><rect x="64" y="192" height="40" width="0">
+      <animate attributeName="width" dur="12.8s" repeatCount="indefinite" keyTimes="0;0.75;0.8375;0.95;0.9925;1" values="0;0;379.6;379.6;0;0"/></rect></clipPath>
+    <text x="64" y="222" clip-path="url(#c3)" class="role">Multi-Agent Orchestrator</text>
+    <rect y="198" width="3" height="30" fill="#22d3ee" x="64">
+      <animate attributeName="x" dur="12.8s" repeatCount="indefinite" keyTimes="0;0.75;0.8375;0.95;0.9925;1" values="64;64;443.6;443.6;64;64"/>
+      <animate attributeName="opacity" dur="12.8s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;0.75;1" values="0;1;0"/>
+    </rect>
+    <g transform="translate(64,262)"><rect width="148" height="30" rx="15" fill="#22d3ee" fill-opacity=".1" stroke="#22d3ee" stroke-opacity=".55"/><text x="74" y="20" text-anchor="middle" class="chip" fill="#22d3ee">📍 Beijing, China</text></g><g transform="translate(224,262)"><rect width="178" height="30" rx="15" fill="#a78bfa" fill-opacity=".1" stroke="#a78bfa" stroke-opacity=".55"/><text x="89" y="20" text-anchor="middle" class="chip" fill="#a78bfa">🤖 Building AI Agents</text></g><g transform="translate(414,262)"><rect width="186" height="30" rx="15" fill="#f472b6" fill-opacity=".1" stroke="#f472b6" stroke-opacity=".55"/><text x="93" y="20" text-anchor="middle" class="chip" fill="#f472b6">⚡ Open to collaborate</text></g>
+  </g>
+  <rect x=".5" y=".5" width="1199" height="339" rx="18" fill="none" stroke="url(#gname)" stroke-opacity=".5"/>
+</svg>

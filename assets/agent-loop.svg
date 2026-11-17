@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <defs>
+    <linearGradient id="lb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#070b14"/><stop offset="1" stop-color="#140c2a"/></linearGradient>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22d3ee"/><stop offset=".33" stop-color="#a78bfa"/><stop offset=".66" stop-color="#f472b6"/><stop offset="1" stop-color="#fbbf24"/></linearGradient>
+    <radialGradient id="core"><stop offset="0" stop-color="#a78bfa" stop-opacity=".6"/><stop offset="1" stop-color="#a78bfa" stop-opacity="0"/></radialGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <path id="loop" d="M450 122 A140 140 0 1 1 449.99 122"/>
+  </defs>
+  <style>
+    .title{font:800 20px -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',Helvetica,Arial,sans-serif;fill:#f1f5f9}
+    .sub{font:500 12px 'SF Mono','JetBrains Mono',Menlo,Consolas,'Liberation Mono',monospace;fill:#64748b}
+    .en{font:800 17px -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',Helvetica,Arial,sans-serif}
+    .zh{font:500 12.5px -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',Helvetica,Arial,sans-serif;fill:#94a3b8}
+    .tool{font:600 10px 'SF Mono','JetBrains Mono',Menlo,Consolas,'Liberation Mono',monospace;fill:#cbd5e1}
+    .core{font:900 22px 'SF Mono','JetBrains Mono',Menlo,Consolas,'Liberation Mono',monospace;fill:#fff}
+    .ring{animation:ping 6s ease-out infinite;transform-box:fill-box;transform-origin:center}
+    .lit{animation:lit 6s ease-in-out infinite;opacity:.25}
+    .spin{animation:spin 24s linear infinite;transform-origin:450px 262px}
+    .counter{animation:spin 24s linear infinite reverse}
+    .dash{animation:dash 1.5s linear infinite}
+    @keyframes ping{0%{transform:scale(1);opacity:.5}20%{transform:scale(2.4);opacity:0}100%{opacity:0}}
+    @keyframes lit{0%,22%{opacity:1}30%,100%{opacity:.25}}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    @keyframes dash{to{stroke-dashoffset:-24}}
+  </style>
+  <rect x="1" y="1" width="898" height="498" rx="16" fill="url(#lb)" stroke="#1e293b"/>
+  <text x="32" y="44" class="title">How my agents think</text>
+  <text x="32" y="66" class="sub">while (!done) { perceive(); plan(); act(); reflect(); }</text>
+  <text x="32" y="476" class="sub">tools orbit the model · context flows around the loop</text>
+  <circle cx="450" cy="262" r="140" fill="none" stroke="url(#ring)" stroke-opacity=".35" stroke-width="2"/>
+  <circle cx="450" cy="262" r="140" fill="none" stroke="url(#ring)" stroke-width="2" stroke-dasharray="4 8" class="dash"/>
+  <circle cx="450" cy="262" r="96" fill="none" stroke="#1e293b" stroke-dasharray="2 6"/>
+  <circle cx="450" cy="262" r="60" fill="url(#core)"/>
+  <g class="spin"><g transform="translate(520.5,290.5)"><g class="counter"><rect x="-25" y="-10" width="50" height="20" rx="10" fill="#111827" stroke="#334155"/><text y="4" text-anchor="middle" class="tool">Browser</text></g></g><g transform="translate(479.7,332.0)"><g class="counter"><rect x="-25" y="-10" width="50" height="20" rx="10" fill="#111827" stroke="#334155"/><text y="4" text-anchor="middle" class="tool">Code</text></g></g><g transform="translate(421.5,332.5)"><g class="counter"><rect x="-25" y="-10" width="50" height="20" rx="10" fill="#111827" stroke="#334155"/><text y="4" text-anchor="middle" class="tool">Search</text></g></g><g transform="translate(380.0,291.7)"><g class="counter"><rect x="-25" y="-10" width="50" height="20" rx="10" fill="#111827" stroke="#334155"/><text y="4" text-anchor="middle" class="tool">Memory</text></g></g><g transform="translate(379.5,233.5)"><g class="counter"><rect x="-25" y="-10" width="50" height="20" rx="10" fill="#111827" stroke="#334155"/><text y="4" text-anchor="middle" class="tool">MCP</text></g></g><g transform="translate(420.3,192.0)"><g class="counter"><rect x="-25" y="-10" width="50" height="20" rx="10" fill="#111827" stroke="#334155"/><text y="4" text-anchor="middle" class="tool">SQL</text></g></g><g transform="translate(478.5,191.5)"><g class="counter"><rect x="-25" y="-10" width="50" height="20" rx="10" fill="#111827" stroke="#334155"/><text y="4" text-anchor="middle" class="tool">Files</text></g></g><g transform="translate(520.0,232.3)"><g class="counter"><rect x="-25" y="-10" width="50" height="20" rx="10" fill="#111827" stroke="#334155"/><text y="4" text-anchor="middle" class="tool">APIs</text></g></g></g>
+  <circle cx="450" cy="262" r="30" fill="#0b1220" stroke="url(#ring)" stroke-width="2.5"/>
+  <text x="450" y="270" text-anchor="middle" class="core">LLM</text>
+  <g>
+      <circle cx="450.0" cy="122.0" r="22" fill="#22d3ee" opacity=".12" class="ring" style="animation-delay:0.0s"/>
+      <circle cx="450.0" cy="122.0" r="22" fill="#0b1220" stroke="#22d3ee" stroke-width="2"/>
+      <circle cx="450.0" cy="122.0" r="7" fill="#22d3ee" class="lit" style="animation-delay:0.0s"/>
+      <text x="484.0" y="112.0" text-anchor="start" class="en" fill="#22d3ee">Perceive</text>
+      <text x="484.0" y="130.0" text-anchor="start" class="zh">感知上下文</text></g><g>
+      <circle cx="590.0" cy="262.0" r="22" fill="#a78bfa" opacity=".12" class="ring" style="animation-delay:1.5s"/>
+      <circle cx="590.0" cy="262.0" r="22" fill="#0b1220" stroke="#a78bfa" stroke-width="2"/>
+      <circle cx="590.0" cy="262.0" r="7" fill="#a78bfa" class="lit" style="animation-delay:1.5s"/>
+      <text x="624.0" y="266.0" text-anchor="start" class="en" fill="#a78bfa">Plan</text>
+      <text x="624.0" y="284.0" text-anchor="start" class="zh">拆解与规划</text></g><g>
+      <circle cx="450.0" cy="402.0" r="22" fill="#f472b6" opacity=".12" class="ring" style="animation-delay:3.0s"/>
+      <circle cx="450.0" cy="402.0" r="22" fill="#0b1220" stroke="#f472b6" stroke-width="2"/>
+      <circle cx="450.0" cy="402.0" r="7" fill="#f472b6" class="lit" style="animation-delay:3.0s"/>
+      <text x="484.0" y="406.0" text-anchor="start" class="en" fill="#f472b6">Act</text>
+      <text x="484.0" y="424.0" text-anchor="start" class="zh">调用工具 / MCP</text></g><g>
+      <circle cx="310.0" cy="262.0" r="22" fill="#fbbf24" opacity=".12" class="ring" style="animation-delay:4.5s"/>
+      <circle cx="310.0" cy="262.0" r="22" fill="#0b1220" stroke="#fbbf24" stroke-width="2"/>
+      <circle cx="310.0" cy="262.0" r="7" fill="#fbbf24" class="lit" style="animation-delay:4.5s"/>
+      <text x="276.0" y="266.0" text-anchor="end" class="en" fill="#fbbf24">Reflect</text>
+      <text x="276.0" y="284.0" text-anchor="end" class="zh">反思与评估</text></g>
+  <g filter="url(#glow)">
+    <circle r="7" fill="#fff"><animateMotion dur="6s" repeatCount="indefinite" rotate="auto"><mpath href="#loop"/></animateMotion></circle>
+    <circle r="4" fill="#22d3ee" opacity=".6"><animateMotion dur="6s" begin="-0.12s" repeatCount="indefinite"><mpath href="#loop"/></animateMotion></circle>
+    <circle r="2.5" fill="#a78bfa" opacity=".4"><animateMotion dur="6s" begin="-0.24s" repeatCount="indefinite"><mpath href="#loop"/></animateMotion></circle>
+  </g>
+</svg>
