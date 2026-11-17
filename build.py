@@ -503,15 +503,6 @@ def readme(cfg):
   <img src="./assets/terminal.svg" width="88%" alt="whoami"/>
 </p>
 
-- 🤖 全职 **AI Agent** 开发 —— 让大模型不只会聊天，还能真正把事情办完
-- 🧠 关注 **Tool Use / MCP / Multi-Agent 协作 / RAG / Agent 评测**，喜欢把复杂流程拆成可靠的自动化
-- 🛠️ 从原型到生产：Prompt 与上下文工程、工具编排、记忆系统、可观测性与 Evals 全链路
-- 🌱 正在探索：长程任务规划、Agent 自我反思与纠错、人机协作的工作流
-- 🌙 夜猫子型选手：最好的代码写于凌晨两点，最难查的 bug 也是
-- 🦆 信奉小黄鸭调试法；同一件事手动做第二遍之前，一定先写个脚本
-- ⌨️ 键盘党 · 终端重度用户 · 坚信 *"It works on my machine"* 不是终点
-- 💬 想聊 Agent、LLM 应用落地，或者一起做点酷东西？随时找我 👋
-
 <img src="./assets/divider.svg" width="100%"/>
 
 ## 🔄 How I Build Agents
