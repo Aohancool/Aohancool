@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="446" viewBox="0 0 900 446">
+  <defs>
+    <linearGradient id="hb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b1020"/><stop offset="1" stop-color="#111827"/></linearGradient>
+    <linearGradient id="bars" x1="0" x2="1"><stop offset="0" stop-color="#4ade80"/><stop offset=".6" stop-color="#fbbf24"/><stop offset="1" stop-color="#f43f5e"/></linearGradient>
+    <pattern id="tick" width="5" height="12" patternUnits="userSpaceOnUse"><rect width="3" height="12" fill="#000" fill-opacity=".45"/></pattern>
+    <linearGradient id="hbd" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#22d3ee"/><stop offset=".5" stop-color="#a78bfa"/><stop offset="1" stop-color="#f472b6"/></linearGradient>
+  </defs>
+  <style>
+    text{font:500 14px 'SF Mono','JetBrains Mono',Menlo,Consolas,'Liberation Mono',monospace;white-space:pre}
+    .ttl{font:600 13px -apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',Helvetica,Arial,sans-serif;fill:#94a3b8}
+    .lbl{fill:#22d3ee;font-weight:700} .br{fill:#64748b;font-weight:700} .v{fill:#e2e8f0} .hl{fill:#4ade80;font-weight:700}
+    .hdr{fill:#0b1020;font-weight:800} .pid{fill:#94a3b8} .usr{fill:#a78bfa} .num{font-weight:700} .dim{fill:#64748b}
+    .cmd{font-weight:600} .fk{fill:#e2e8f0;font-weight:700} .fl{fill:#0b1020;font-weight:700}
+  </style>
+  <rect x="1" y="1" width="898" height="444" rx="14" fill="url(#hb)" stroke="url(#hbd)" stroke-opacity=".6"/>
+  <path d="M1 44H899" stroke="#1f2937"/>
+  <circle cx="26" cy="23" r="6.5" fill="#ff5f57"/><circle cx="48" cy="23" r="6.5" fill="#febc2e"/><circle cx="70" cy="23" r="6.5" fill="#28c840"/>
+  <text x="450.0" y="27" text-anchor="middle" class="ttl">htop — aohancool@brain</text>
+  <text x="30" y="76" class="lbl">0</text><text x="46" y="76" class="br">[</text>
+    <rect x="58" y="65" width="180" height="12" fill="#1e293b"/>
+    <rect x="58" y="65" height="12" fill="url(#bars)" width="108">
+      <animate attributeName="width" values="108;153;126;171;108" dur="2.4s" repeatCount="indefinite"/></rect>
+    <rect x="58" y="65" width="180" height="12" fill="url(#tick)"/>
+    <text x="242" y="76" class="br">]</text><text x="275" y="76" class="lbl">1</text><text x="291" y="76" class="br">[</text>
+    <rect x="303" y="65" width="180" height="12" fill="#1e293b"/>
+    <rect x="303" y="65" height="12" fill="url(#bars)" width="72">
+      <animate attributeName="width" values="72;135;99;117;72" dur="3.0s" repeatCount="indefinite"/></rect>
+    <rect x="303" y="65" width="180" height="12" fill="url(#tick)"/>
+    <text x="487" y="76" class="br">]</text><text x="30" y="102" class="lbl">2</text><text x="46" y="102" class="br">[</text>
+    <rect x="58" y="91" width="180" height="12" fill="#1e293b"/>
+    <rect x="58" y="91" height="12" fill="url(#bars)" width="144">
+      <animate attributeName="width" values="144;108;162;126;144" dur="3.6s" repeatCount="indefinite"/></rect>
+    <rect x="58" y="91" width="180" height="12" fill="url(#tick)"/>
+    <text x="242" y="102" class="br">]</text><text x="275" y="102" class="lbl">3</text><text x="291" y="102" class="br">[</text>
+    <rect x="303" y="91" width="180" height="12" fill="#1e293b"/>
+    <rect x="303" y="91" height="12" fill="url(#bars)" width="45">
+      <animate attributeName="width" values="45;99;63;108;45" dur="4.2s" repeatCount="indefinite"/></rect>
+    <rect x="303" y="91" width="180" height="12" fill="url(#tick)"/>
+    <text x="487" y="102" class="br">]</text>
+  <text x="560" y="76"><tspan class="lbl">Tasks:</tspan><tspan dx="8" class="v">17 side projects · </tspan><tspan class="hl">3 shipped</tspan></text><text x="560" y="102"><tspan class="lbl">Load avg:</tspan><tspan dx="8" class="v">☕ ☕ ☕</tspan><tspan class="hl"></tspan></text><text x="560" y="128"><tspan class="lbl">Uptime:</tspan><tspan dx="8" class="v">02:47 AM, </tspan><tspan class="hl">still coding</tspan></text>
+  <text x="30" y="128"><tspan class="lbl">Mem</tspan><tspan dx="4" class="br">[</tspan><tspan fill="#4ade80">||||||||||||||||||</tspan><tspan fill="#a78bfa">||||||||</tspan><tspan fill="#334155">||||||||</tspan><tspan class="br">]</tspan><tspan dx="10" class="dim">ctx 76%</tspan></text>
+  <rect x="14" y="154" width="872" height="24" fill="#4ade80"/>
+  <text x="30" y="171" class="hdr">  PID</text><text x="92" y="171" class="hdr">USER</text><text x="210" y="171" class="hdr">CPU%</text><text x="440" y="171" class="hdr" text-anchor="end">MEM</text><text x="462" y="171" class="hdr">TIME+</text><text x="530" y="171" class="hdr">COMMAND</text>
+  
+    
+    <text x="30" y="196" class="pid">    1</text><text x="92" y="196" class="usr">aohancool</text>
+    <rect x="210" y="183" width="120" height="12" rx="3" fill="#1e293b"/>
+    <rect x="210" y="183" height="12" rx="3" fill="#f472b6" width="116">
+      <animate attributeName="width" values="116;110;119;114;116" dur="3.0s" repeatCount="indefinite" calcMode="spline" keySplines=".4 0 .6 1;.4 0 .6 1;.4 0 .6 1;.4 0 .6 1"/></rect>
+    <text x="344" y="196" class="num" fill="#f472b6">99%</text>
+    <text x="440" y="196" class="dim" text-anchor="end">∞</text>
+    <text x="462" y="196" class="dim">24/7</text>
+    <text x="530" y="196" class="cmd" fill="#cbd5e1">coffee.exe --refill --no-limit</text>
+    <rect x="14" y="206" width="872" height="28" fill="#22d3ee" fill-opacity=".1"/>
+    <text x="30" y="226" class="pid">   42</text><text x="92" y="226" class="usr">aohancool</text>
+    <rect x="210" y="213" width="120" height="12" rx="3" fill="#1e293b"/>
+    <rect x="210" y="213" height="12" rx="3" fill="#22d3ee" width="94">
+      <animate attributeName="width" values="94;106;84;101;94" dur="3.7s" repeatCount="indefinite" calcMode="spline" keySplines=".4 0 .6 1;.4 0 .6 1;.4 0 .6 1;.4 0 .6 1"/></rect>
+    <text x="344" y="226" class="num" fill="#22d3ee">88%</text>
+    <text x="440" y="226" class="dim" text-anchor="end">3.1G</text>
+    <text x="462" y="226" class="dim">∞:∞</text>
+    <text x="530" y="226" class="cmd" fill="#f8fafc">agent-runtime --mcp --tools=all</text>
+    
+    <text x="30" y="256" class="pid"> 1337</text><text x="92" y="256" class="usr">aohancool</text>
+    <rect x="210" y="243" width="120" height="12" rx="3" fill="#1e293b"/>
+    <rect x="210" y="243" height="12" rx="3" fill="#a78bfa" width="66">
+      <animate attributeName="width" values="66;86;73;96;66" dur="4.4s" repeatCount="indefinite" calcMode="spline" keySplines=".4 0 .6 1;.4 0 .6 1;.4 0 .6 1;.4 0 .6 1"/></rect>
+    <text x="344" y="256" class="num" fill="#a78bfa">80%</text>
+    <text x="440" y="256" class="dim" text-anchor="end">1.2G</text>
+    <text x="462" y="256" class="dim">02:47</text>
+    <text x="530" y="256" class="cmd" fill="#cbd5e1">debug --method=rubber-duck 🦆</text>
+    
+    <text x="30" y="286" class="pid"> 2077</text><text x="92" y="286" class="usr">aohancool</text>
+    <rect x="210" y="273" width="120" height="12" rx="3" fill="#1e293b"/>
+    <rect x="210" y="273" height="12" rx="3" fill="#fbbf24" width="36">
+      <animate attributeName="width" values="36;55;46;62;36" dur="5.1s" repeatCount="indefinite" calcMode="spline" keySplines=".4 0 .6 1;.4 0 .6 1;.4 0 .6 1;.4 0 .6 1"/></rect>
+    <text x="344" y="286" class="num" fill="#fbbf24">52%</text>
+    <text x="440" y="286" class="dim" text-anchor="end">640M</text>
+    <text x="462" y="286" class="dim">88:00</text>
+    <text x="530" y="286" class="cmd" fill="#cbd5e1">side-project-17 --status=wip</text>
+    
+    <text x="30" y="316" class="pid"> 8080</text><text x="92" y="316" class="usr">aohancool</text>
+    <rect x="210" y="303" width="120" height="12" rx="3" fill="#1e293b"/>
+    <rect x="210" y="303" height="12" rx="3" fill="#4ade80" width="26">
+      <animate attributeName="width" values="26;42;34;22;26" dur="5.8s" repeatCount="indefinite" calcMode="spline" keySplines=".4 0 .6 1;.4 0 .6 1;.4 0 .6 1;.4 0 .6 1"/></rect>
+    <text x="344" y="316" class="num" fill="#4ade80">35%</text>
+    <text x="440" y="316" class="dim" text-anchor="end">512M</text>
+    <text x="462" y="316" class="dim">12:34</text>
+    <text x="530" y="316" class="cmd" fill="#cbd5e1">learn --topic=llm-evals,long-horizon</text>
+    
+    <text x="30" y="346" class="pid">  404</text><text x="92" y="346" class="usr">aohancool</text>
+    <rect x="210" y="333" width="120" height="12" rx="3" fill="#1e293b"/>
+    <rect x="210" y="333" height="12" rx="3" fill="#64748b" width="2">
+      <animate attributeName="width" values="2;1;4;1;2" dur="6.5s" repeatCount="indefinite" calcMode="spline" keySplines=".4 0 .6 1;.4 0 .6 1;.4 0 .6 1;.4 0 .6 1"/></rect>
+    <text x="344" y="346" class="num" fill="#64748b">3%</text>
+    <text x="440" y="346" class="dim" text-anchor="end">8K</text>
+    <text x="462" y="346" class="dim">00:00</text>
+    <text x="530" y="346" class="cmd" fill="#cbd5e1">sleep  # process not found</text>
+  <text x="20" y="424" class="fk">F1</text><rect x="38.8" y="409" width="43.6" height="20" fill="#22d3ee" fill-opacity=".85"/><text x="43.8" y="424" class="fl">Help</text><text x="92.4" y="424" class="fk">F2</text><rect x="111.2" y="409" width="77.2" height="20" fill="#22d3ee" fill-opacity=".85"/><text x="116.2" y="424" class="fl">Refactor</text><text x="198.4" y="424" class="fk">F3</text><rect x="217.20000000000002" y="409" width="60.400000000000006" height="20" fill="#22d3ee" fill-opacity=".85"/><text x="222.20000000000002" y="424" class="fl">Search</text><text x="287.6" y="424" class="fk">F5</text><rect x="306.40000000000003" y="409" width="43.6" height="20" fill="#22d3ee" fill-opacity=".85"/><text x="311.40000000000003" y="424" class="fl">Tree</text><text x="360.0" y="424" class="fk">F6</text><rect x="378.8" y="409" width="68.80000000000001" height="20" fill="#22d3ee" fill-opacity=".85"/><text x="383.8" y="424" class="fl">SortBy☕</text><text x="457.6" y="424" class="fk">F9</text><rect x="476.40000000000003" y="409" width="85.60000000000001" height="20" fill="#22d3ee" fill-opacity=".85"/><text x="481.40000000000003" y="424" class="fl">Kill bugs</text><text x="572.0" y="424" class="fk">F10</text><rect x="599.2" y="409" width="43.6" height="20" fill="#22d3ee" fill-opacity=".85"/><text x="604.2" y="424" class="fl">Ship</text>
+</svg>

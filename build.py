@@ -97,7 +97,7 @@ def banner(cfg):
       <circle cx="{x}" cy="{y}" r="{r}" fill="#0b1220" stroke="url(#gname)" stroke-width="{2.5 if main else 1.6}"/>
       <text x="{x}" y="{y+4}" text-anchor="middle" class="{"nl" if main else "ns"}">{label}</text></g>''')
 
-    chips = [("📍 " + cfg["city"], "#22d3ee"), ("🤖 Building AI Agents", "#a78bfa"), ("⚡ Open to collaborate", "#f472b6")]
+    chips = [("🤖 Agent Builder", "#22d3ee"), ("🌙 Night-owl Coder", "#a78bfa"), ("☕ Coffee → Code", "#f472b6"), ("🐛 Bug Hunter", "#fbbf24")]
     chip_svg, cxp = [], x0
     for text, col in chips:
         w = len(text) * 7.6 + 26
@@ -150,7 +150,7 @@ def banner(cfg):
     <rect class="scan" width="{W}" height="2" fill="#22d3ee" opacity=".08"/>
     {"".join(lines)}
     {"".join(circles)}
-    <text x="{x0}" y="92" class="hello">~/beijing $ echo "hello, world 👋 I'm"</text>
+    <text x="{x0}" y="92" class="hello">~/dev $ echo "hello, world 👋 I'm"</text>
     <text x="{x0-3}" y="160" class="name" fill="url(#gname)">{name}</text>
     <text x="{x0}" y="{y0}" class="role" fill="#475569" opacity="0">.</text>
     <text x="{x0-22}" y="{y0}" style="font:700 {fs}px {MONO};fill:#22d3ee">›</text>
@@ -171,9 +171,10 @@ def terminal(cfg):
         [("~ ", P), ("$ ", D), ("cat about.yaml", V)],
         [("name", K), (":     ", D), (cfg["name"], S)],
         [("role", K), (":     ", D), ("AI Agent Developer", S)],
-        [("based", K), (":    ", D), (cfg["city"] + "  🏯", S)],
+        [("based", K), (":    ", D), (cfg["city"], S)],
+        [("editor", K), (":   ", D), ("neovim + cursor  ", S), ("# yes, both", D)],
         [("focus", K), (":    ", D), (f"[{focus}]", Y)],
-        [("loves", K), (":    ", D), ("[shipping, clean abstractions, 🍜 炸酱面]", Y)],
+        [("habits", K), (":   ", D), ("[night-owl, rubber-duck debugging, automate everything twice]", Y)],
         [("motto", K), (":    ", D), (f'"{cfg["motto"]}"', S)],
         [],
         [("~ ", P), ("$ ", D), ('agent run --goal "build something cool"', V)],
@@ -193,7 +194,7 @@ def terminal(cfg):
         if not row:
             t += 0.2
             continue
-        typed = i in (0, 8)
+        typed = row[0][1] == P
         start = t
         t += 1.1 if typed else step
         p0 = start / T * 100
@@ -230,7 +231,7 @@ def terminal(cfg):
   <rect x="1" y="1" width="{W-2}" height="{H-2}" rx="14" fill="url(#tb)" stroke="url(#bd)" stroke-opacity=".6"/>
   <path d="M1 44H{W-1}" stroke="#1f2937"/>
   <circle cx="26" cy="23" r="6.5" fill="#ff5f57"/><circle cx="48" cy="23" r="6.5" fill="#febc2e"/><circle cx="70" cy="23" r="6.5" fill="#28c840"/>
-  <text x="{W/2}" y="27" text-anchor="middle" class="ttl">{escape(cfg["github"])}@beijing — zsh — 90×{len(rows)+2}</text>
+  <text x="{W/2}" y="27" text-anchor="middle" class="ttl">{escape(cfg["github"])}@dev-box — zsh — 90×{len(rows)+2}</text>
   {"".join(out)}
 </svg>'''
 
@@ -310,6 +311,92 @@ def agent_loop():
 </svg>'''
 
 
+# -------------------------------------------------------------------- htop
+def htop(cfg):
+    W = 900
+    user = escape(cfg["github"].lower()[:9])
+    procs = [  # pid, cpu 数值序列(%), mem, 时间, 命令, 颜色
+        (1,    [97, 92, 99, 95, 97],  "∞",    "24/7",   "coffee.exe --refill --no-limit", "#f472b6"),
+        (42,   [78, 88, 70, 84, 78],  "3.1G", "∞:∞",    "agent-runtime --mcp --tools=all", "#22d3ee"),
+        (1337, [55, 72, 61, 80, 55],  "1.2G", "02:47",  "debug --method=rubber-duck 🦆", "#a78bfa"),
+        (2077, [30, 46, 38, 52, 30],  "640M", "88:00",  "side-project-17 --status=wip", "#fbbf24"),
+        (8080, [22, 35, 28, 18, 22],  "512M", "12:34",  "learn --topic=llm-evals,long-horizon", "#4ade80"),
+        (404,  [2, 1, 3, 1, 2],       "8K",   "00:00",  "sleep  # process not found", "#64748b"),
+    ]
+    top, lh = 196, 30
+    H = top + lh * len(procs) + 70
+    bx, bw = 210, 120  # CPU 条形图位置/宽度
+
+    rows = []
+    for k, (pid, cpu, mem, tm, cmd, col) in enumerate(procs):
+        y = top + k * lh
+        widths = ";".join(f"{bw * c / 100:.0f}" for c in cpu)
+        dur = 3 + k * 0.7
+        sel = k == 1
+        rows.append(f"""
+    {'<rect x="14" y="%d" width="%d" height="%d" fill="#22d3ee" fill-opacity=".1"/>' % (y - 20, W - 28, lh - 2) if sel else ''}
+    <text x="30" y="{y}" class="pid">{pid:>5}</text><text x="92" y="{y}" class="usr">{user}</text>
+    <rect x="{bx}" y="{y-13}" width="{bw}" height="12" rx="3" fill="#1e293b"/>
+    <rect x="{bx}" y="{y-13}" height="12" rx="3" fill="{col}" width="{bw*cpu[0]/100:.0f}">
+      <animate attributeName="width" values="{widths}" dur="{dur:.1f}s" repeatCount="indefinite" calcMode="spline" keySplines="{';'.join(['.4 0 .6 1']*(len(cpu)-1))}"/></rect>
+    <text x="{bx+bw+14}" y="{y}" class="num" fill="{col}">{max(cpu)}%</text>
+    <text x="440" y="{y}" class="dim" text-anchor="end">{escape(mem)}</text>
+    <text x="462" y="{y}" class="dim">{tm}</text>
+    <text x="530" y="{y}" class="cmd" fill="{'#f8fafc' if sel else '#cbd5e1'}">{escape(cmd)}</text>""")
+
+    # 顶部 CPU 核心条（htop 风格的 [|||||   ] ）
+    meters = []
+    for k in range(4):
+        x, y = 30 + (k % 2) * 245, 76 + (k // 2) * 26
+        seq = [[60, 85, 70, 95, 60], [40, 75, 55, 65, 40], [80, 60, 90, 70, 80], [25, 55, 35, 60, 25]][k]
+        vals = ";".join(f"{180 * v / 100:.0f}" for v in seq)
+        meters.append(f"""<text x="{x}" y="{y}" class="lbl">{k}</text><text x="{x+16}" y="{y}" class="br">[</text>
+    <rect x="{x+28}" y="{y-11}" width="180" height="12" fill="#1e293b"/>
+    <rect x="{x+28}" y="{y-11}" height="12" fill="url(#bars)" width="{180*seq[0]/100:.0f}">
+      <animate attributeName="width" values="{vals}" dur="{2.4 + k*0.6:.1f}s" repeatCount="indefinite"/></rect>
+    <rect x="{x+28}" y="{y-11}" width="180" height="12" fill="url(#tick)"/>
+    <text x="{x+212}" y="{y}" class="br">]</text>""")
+    info = [("Tasks:", "17 side projects · ", "3 shipped"), ("Load avg:", "☕ ☕ ☕", ""), ("Uptime:", "02:47 AM, ", "still coding")]
+    info_svg = "".join(
+        f'<text x="560" y="{76 + i*26}"><tspan class="lbl">{a}</tspan><tspan dx="8" class="v">{escape(b)}</tspan><tspan class="hl">{escape(c)}</tspan></text>'
+        for i, (a, b, c) in enumerate(info))
+
+    keys = [("F1", "Help"), ("F2", "Refactor"), ("F3", "Search"), ("F5", "Tree"), ("F6", "SortBy☕"), ("F9", "Kill bugs"), ("F10", "Ship")]
+    kx, ksvg = 20, []
+    for k, lbl in keys:
+        ksvg.append(f'<text x="{kx}" y="{H-22}" class="fk">{k}</text>'
+                    f'<rect x="{kx+len(k)*8.4+2}" y="{H-37}" width="{len(lbl)*8.4+10}" height="20" fill="#22d3ee" fill-opacity=".85"/>'
+                    f'<text x="{kx+len(k)*8.4+7}" y="{H-22}" class="fl">{escape(lbl)}</text>')
+        kx += len(k) * 8.4 + len(lbl) * 8.4 + 22
+
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">
+  <defs>
+    <linearGradient id="hb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b1020"/><stop offset="1" stop-color="#111827"/></linearGradient>
+    <linearGradient id="bars" x1="0" x2="1"><stop offset="0" stop-color="#4ade80"/><stop offset=".6" stop-color="#fbbf24"/><stop offset="1" stop-color="#f43f5e"/></linearGradient>
+    <pattern id="tick" width="5" height="12" patternUnits="userSpaceOnUse"><rect width="3" height="12" fill="#000" fill-opacity=".45"/></pattern>
+    <linearGradient id="hbd" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#22d3ee"/><stop offset=".5" stop-color="#a78bfa"/><stop offset="1" stop-color="#f472b6"/></linearGradient>
+  </defs>
+  <style>
+    text{{font:500 14px {MONO};white-space:pre}}
+    .ttl{{font:600 13px {SANS};fill:#94a3b8}}
+    .lbl{{fill:#22d3ee;font-weight:700}} .br{{fill:#64748b;font-weight:700}} .v{{fill:#e2e8f0}} .hl{{fill:#4ade80;font-weight:700}}
+    .hdr{{fill:#0b1020;font-weight:800}} .pid{{fill:#94a3b8}} .usr{{fill:#a78bfa}} .num{{font-weight:700}} .dim{{fill:#64748b}}
+    .cmd{{font-weight:600}} .fk{{fill:#e2e8f0;font-weight:700}} .fl{{fill:#0b1020;font-weight:700}}
+  </style>
+  <rect x="1" y="1" width="{W-2}" height="{H-2}" rx="14" fill="url(#hb)" stroke="url(#hbd)" stroke-opacity=".6"/>
+  <path d="M1 44H{W-1}" stroke="#1f2937"/>
+  <circle cx="26" cy="23" r="6.5" fill="#ff5f57"/><circle cx="48" cy="23" r="6.5" fill="#febc2e"/><circle cx="70" cy="23" r="6.5" fill="#28c840"/>
+  <text x="{W/2}" y="27" text-anchor="middle" class="ttl">htop — {user}@brain</text>
+  {"".join(meters)}
+  {info_svg}
+  <text x="30" y="128"><tspan class="lbl">Mem</tspan><tspan dx="4" class="br">[</tspan><tspan fill="#4ade80">||||||||||||||||||</tspan><tspan fill="#a78bfa">||||||||</tspan><tspan fill="#334155">||||||||</tspan><tspan class="br">]</tspan><tspan dx="10" class="dim">ctx 76%</tspan></text>
+  <rect x="14" y="{top-42}" width="{W-28}" height="24" fill="#4ade80"/>
+  <text x="30" y="{top-25}" class="hdr">  PID</text><text x="92" y="{top-25}" class="hdr">USER</text><text x="{bx}" y="{top-25}" class="hdr">CPU%</text><text x="440" y="{top-25}" class="hdr" text-anchor="end">MEM</text><text x="462" y="{top-25}" class="hdr">TIME+</text><text x="530" y="{top-25}" class="hdr">COMMAND</text>
+  {"".join(rows)}
+  {"".join(ksvg)}
+</svg>"""
+
+
 # ----------------------------------------------------------------- divider
 def divider():
     W, H = 1200, 24
@@ -345,11 +432,11 @@ def readme(cfg):
     return f'''<!-- Generated by build.py — 修改 CONFIG 后重新运行即可 -->
 
 <p align="center">
-  <img src="./assets/banner.svg" width="100%" alt="{cfg["name"]} · AI Agent Developer · {cfg["city"]}"/>
+  <img src="./assets/banner.svg" width="100%" alt="{cfg["name"]} · AI Agent Developer"/>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/📍_Based_in-Beijing-22d3ee?style=for-the-badge&labelColor=0d1117"/>
+  <img src="https://img.shields.io/badge/☕_Powered_by-Coffee-22d3ee?style=for-the-badge&labelColor=0d1117"/>
   <img src="https://img.shields.io/badge/🤖_Building-AI_Agents-a78bfa?style=for-the-badge&labelColor=0d1117"/>
   <img src="https://komarev.com/ghpvc/?username={u}&label=Profile%20views&color=f472b6&style=for-the-badge&labelColor=0d1117"/>{contact_html}
 </p>
@@ -362,10 +449,13 @@ def readme(cfg):
   <img src="./assets/terminal.svg" width="88%" alt="whoami"/>
 </p>
 
-- 🏯 坐标 **北京**，专注 **AI Agent** 开发 —— 让大模型不只会聊天，还能真正把事情办完
+- 🤖 全职 **AI Agent** 开发 —— 让大模型不只会聊天，还能真正把事情办完
 - 🧠 关注 **Tool Use / MCP / Multi-Agent 协作 / RAG / Agent 评测**，喜欢把复杂流程拆成可靠的自动化
 - 🛠️ 从原型到生产：Prompt 与上下文工程、工具编排、记忆系统、可观测性与 Evals 全链路
 - 🌱 正在探索：长程任务规划、Agent 自我反思与纠错、人机协作的工作流
+- 🌙 夜猫子型选手：最好的代码写于凌晨两点，最难查的 bug 也是
+- 🦆 信奉小黄鸭调试法；同一件事手动做第二遍之前，一定先写个脚本
+- ⌨️ 键盘党 · 终端重度用户 · 坚信 *"It works on my machine"* 不是终点
 - 💬 想聊 Agent、LLM 应用落地，或者一起做点酷东西？随时找我 👋
 
 <img src="./assets/divider.svg" width="100%"/>
@@ -396,6 +486,14 @@ def readme(cfg):
 </td>
 </tr>
 </table>
+
+<img src="./assets/divider.svg" width="100%"/>
+
+## ⚙️ Currently Running
+
+<p align="center">
+  <img src="./assets/htop.svg" width="88%" alt="htop — what's running in my head"/>
+</p>
 
 <img src="./assets/divider.svg" width="100%"/>
 
@@ -437,7 +535,7 @@ def readme(cfg):
 </p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=18&duration=3500&pause=800&color=A78BFA&center=true&vCenter=true&width=600&lines=Thanks+for+stopping+by+%F0%9F%91%8B;Let+agents+do+the+boring+parts.;Made+with+%E2%9D%A4%EF%B8%8F+in+Beijing" alt="footer"/>
+  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=18&duration=3500&pause=800&color=A78BFA&center=true&vCenter=true&width=600&lines=Thanks+for+stopping+by+%F0%9F%91%8B;Let+agents+do+the+boring+parts.;git+commit+-m+%22see+you+in+the+next+PR+%F0%9F%9A%80%22" alt="footer"/>
 </p>
 '''
 
@@ -479,6 +577,7 @@ def main():
     (ASSETS / "banner.svg").write_text(banner(CONFIG), encoding="utf-8")
     (ASSETS / "terminal.svg").write_text(terminal(CONFIG), encoding="utf-8")
     (ASSETS / "agent-loop.svg").write_text(agent_loop(), encoding="utf-8")
+    (ASSETS / "htop.svg").write_text(htop(CONFIG), encoding="utf-8")
     (ASSETS / "divider.svg").write_text(divider(), encoding="utf-8")
     (ROOT / "README.md").write_text(readme(CONFIG), encoding="utf-8")
     wf = ROOT / ".github" / "workflows"
