@@ -35,26 +35,9 @@
   <img src="./assets/agent-loop.svg" width="88%" alt="perceive → plan → act → reflect"/>
 </p>
 
-<table>
-<tr>
-<td width="50%" valign="top">
-
-### 🧩 Agent Engineering
-- 单 Agent / 多 Agent 编排与任务拆解
-- Function Calling · MCP Server 开发
-- 长短期记忆、上下文压缩与检索
-
-</td>
-<td width="50%" valign="top">
-
-### 🚀 Production Ready
-- Agent 评测体系 & 回归测试
-- Tracing / 可观测性 / 成本控制
-- 安全护栏、人工审批与兜底策略
-
-</td>
-</tr>
-</table>
+<p align="center">
+  <img src="./assets/capabilities.svg" width="88%" alt="Agent Engineering · Production Ready"/>
+</p>
 
 <img src="./assets/divider.svg" width="100%"/>
 

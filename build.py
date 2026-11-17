@@ -397,6 +397,60 @@ def htop(cfg):
 </svg>"""
 
 
+# ------------------------------------------------------------ capabilities
+def capabilities():
+    W, H = 900, 240
+    cards = [
+        ("🧩", "Agent Engineering", "#22d3ee", "#a78bfa", [
+            ("◇", "单 Agent / 多 Agent 编排与任务拆解"),
+            ("◇", "Function Calling · MCP Server 开发"),
+            ("◇", "长短期记忆、上下文压缩与检索")]),
+        ("🚀", "Production Ready", "#f472b6", "#fbbf24", [
+            ("◇", "Agent 评测体系 & 回归测试"),
+            ("◇", "Tracing / 可观测性 / 成本控制"),
+            ("◇", "安全护栏、人工审批与兜底策略")]),
+    ]
+    gap, pad = 24, 2
+    cw = (W - gap - pad * 2) / 2
+    out, defs = [], []
+    for k, (icon, title, c1, c2, items) in enumerate(cards):
+        x = pad + k * (cw + gap)
+        defs.append(f"""<linearGradient id="cg{k}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="{c1}"/><stop offset="1" stop-color="{c2}"/></linearGradient>
+    <clipPath id="cc{k}"><rect x="{x:.0f}" y="2" width="{cw:.0f}" height="{H-4}" rx="16"/></clipPath>""")
+        lis = "".join(
+            f'<g transform="translate({x+32:.0f},{122 + i*42})"><rect x="0" y="-15" width="22" height="22" rx="6" fill="url(#cg{k})" fill-opacity=".14" stroke="url(#cg{k})" stroke-opacity=".6"/>'
+            f'<text x="11" y="1" text-anchor="middle" class="ix" fill="{c1}">{i+1:02d}</text>'
+            f'<text x="36" y="1" class="it">{escape(t)}</text></g>' for i, (_, t) in enumerate(items))
+        out.append(f"""<g>
+    <rect x="{x:.0f}" y="2" width="{cw:.0f}" height="{H-4}" rx="16" fill="#0b1020"/>
+    <g clip-path="url(#cc{k})">
+      <circle cx="{x+cw-40:.0f}" cy="30" r="120" fill="{c2}" opacity=".10"/>
+      <rect x="{x:.0f}" y="2" width="{cw:.0f}" height="{H-4}" fill="url(#grid2)"/>
+      <rect x="{x-200:.0f}" y="0" width="120" height="{H}" fill="url(#shine)" transform="skewX(-20)">
+        <animate attributeName="x" values="{x-300:.0f};{x+cw+200:.0f}" dur="5s" begin="{k*2.5}s" repeatCount="indefinite"/></rect>
+    </g>
+    <rect x="{x+.5:.1f}" y="2.5" width="{cw-1:.0f}" height="{H-5}" rx="16" fill="none" stroke="url(#cg{k})" stroke-opacity=".55" stroke-width="1.5"/>
+    <rect x="{x+32:.0f}" y="2" width="64" height="3" rx="1.5" fill="url(#cg{k})"/>
+    <text x="{x+32:.0f}" y="64" class="ic">{icon}</text>
+    <text x="{x+72:.0f}" y="64" class="tt" fill="url(#cg{k})">{escape(title)}</text>
+    <text x="{x+cw-28:.0f}" y="62" text-anchor="end" class="tag">0{k+1} / 02</text>
+    <path d="M{x+32:.0f} 86H{x+cw-32:.0f}" stroke="#1e293b"/>
+    {lis}
+  </g>""")
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">
+  <defs>
+    {"".join(defs)}
+    <linearGradient id="shine" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".06"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <pattern id="grid2" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#94a3b8" stroke-opacity=".05"/></pattern>
+  </defs>
+  <style>
+    .tt{{font:800 22px {SANS}}} .ic{{font:24px {SANS}}} .tag{{font:600 12px {MONO};fill:#475569}}
+    .it{{font:500 15.5px {SANS};fill:#cbd5e1}} .ix{{font:700 10px {MONO}}}
+  </style>
+  {"".join(out)}
+</svg>"""
+
+
 # ----------------------------------------------------------------- divider
 def divider():
     W, H = 1200, 24
@@ -466,26 +520,9 @@ def readme(cfg):
   <img src="./assets/agent-loop.svg" width="88%" alt="perceive → plan → act → reflect"/>
 </p>
 
-<table>
-<tr>
-<td width="50%" valign="top">
-
-### 🧩 Agent Engineering
-- 单 Agent / 多 Agent 编排与任务拆解
-- Function Calling · MCP Server 开发
-- 长短期记忆、上下文压缩与检索
-
-</td>
-<td width="50%" valign="top">
-
-### 🚀 Production Ready
-- Agent 评测体系 & 回归测试
-- Tracing / 可观测性 / 成本控制
-- 安全护栏、人工审批与兜底策略
-
-</td>
-</tr>
-</table>
+<p align="center">
+  <img src="./assets/capabilities.svg" width="88%" alt="Agent Engineering · Production Ready"/>
+</p>
 
 <img src="./assets/divider.svg" width="100%"/>
 
@@ -578,6 +615,7 @@ def main():
     (ASSETS / "terminal.svg").write_text(terminal(CONFIG), encoding="utf-8")
     (ASSETS / "agent-loop.svg").write_text(agent_loop(), encoding="utf-8")
     (ASSETS / "htop.svg").write_text(htop(CONFIG), encoding="utf-8")
+    (ASSETS / "capabilities.svg").write_text(capabilities(), encoding="utf-8")
     (ASSETS / "divider.svg").write_text(divider(), encoding="utf-8")
     (ROOT / "README.md").write_text(readme(CONFIG), encoding="utf-8")
     wf = ROOT / ".github" / "workflows"
